@@ -2,24 +2,49 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>Mobiglas Chat</title>
+  <title>Mobiglas Chat App</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div id="login-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>ログイン</h2>
+      <input type="text" id="login-username" placeholder="ユーザー名" />
+      <input type="password" id="login-password" placeholder="パスワード" />
+      <button onclick="attemptLogin()">ログイン</button>
+      <p>アカウントが必要ですか？ <a href="#" onclick="showRegisterModal()">新規登録</a></p>
+    </div>
+  </div>
+
+  <div id="register-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>新規登録</h2>
+      <input type="text" id="register-username" placeholder="ユーザー名" />
+      <input type="password" id="register-password" placeholder="パスワード" />
+      <button onclick="attemptRegister()">登録</button>
+    </div>
+  </div>
+
   <div class="navbar">
-    <button>🛡<br>Guild</button>
-    <button>👥<br>Friends</button>
-    <button>🧑‍🤝‍🧑<br>Party</button>
-    <button>💬<br>Chat</button>
+    <button onclick="switchTab('guild')">🛡 Guild</button>
+    <button onclick="switchTab('friends')">👥 Friends</button>
+    <button onclick="switchTab('party')">🧑‍🤝‍🧑 Party</button>
+    <button onclick="switchTab('chat')">💬 Chat</button>
+    <button onclick="logout()">🔓 Logout</button>
   </div>
 
-  <div class="chat-window" id="chat-window"></div>
-
-  <div class="input-area">
-    <button id="ai-button">AIアシスト</button>
-    <input type="text" id="message-input" placeholder="メッセージを入力..." />
-    <button id="send-button">↵</button>
+  <div class="tab" id="tab-chat">
+    <div class="chat-window" id="chat-window"></div>
+    <div class="input-area">
+      <button id="ai-button">🤖</button>
+      <input type="text" id="message-input" placeholder="メッセージを入力..." />
+      <button id="send-button">📤 送信</button>
+    </div>
   </div>
+
+  <div class="tab hidden" id="tab-guild">ギルド情報（後で実装）</div>
+  <div class="tab hidden" id="tab-friends">フレンド情報（後で実装）</div>
+  <div class="tab hidden" id="tab-party">パーティー情報（後で実装）</div>
 
   <script src="script.js"></script>
 </body>
